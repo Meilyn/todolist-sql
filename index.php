@@ -28,6 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="refresh">
 	<title>To Do List</title>
+	<link rel="icon" href="assets/img/favicon.ico" />
 	<!-- Bootstrap -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
@@ -39,9 +40,11 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 	<link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
 </head>
 <body>
-	<nav class="navbar navbar-dark bg-dark">
-  		<a class="navbar-brand" href="#">TO DO LIST</a>
-	</nav>
+	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+			<a href="index.html" class="navbar-brand">
+				<img src="assets/img/logo.jpg" alt="logo TDL" width="40"> To Do List
+			</a>
+	</nav>		
 	<div class="container">
 		<form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 			<h1>Task To Do</h1><hr>

@@ -3,7 +3,7 @@
 ## Parametres
 **repository :** `todolist-sql`  
 
-**Concepto:** Meilyn Andrade
+**Dev:** Meilyn Andrade
 
 **Où:** BeCode [Junior Web Developper]
 
@@ -14,6 +14,7 @@
 ## Projet
 
 
+
 Crée un outil de gestion de tâches basique et fiable. L'interface est subdivisée en deux parties :
 
 partie supérieure : la liste des tâches à faire, avec pour chaque tâche, une checkbox. Lorsqu'une tâche est effectuée, on coche la tâche puis on appuye sur un bouton "Enregistrer" qui rafraichit la liste en barrant la tâche terminée et en la mettant dans la zone "archivée".
@@ -22,7 +23,7 @@ partie inférieure : un petit formulaire permettant d'ajouter une tâche (un cha
 
 Mon App avances: 
 
-- [x] Possibilitée de créer des tâches 
+- [x] Possibilitée de créer des tâches :+1:
 - [ ] Archive
 - [ ] Bonus
 

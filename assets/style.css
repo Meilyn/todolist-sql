@@ -19,8 +19,11 @@ table {
 			background-color: #dddddd;
 		}
 nav a {
-	color: #fd217e!important;
+	color: #fff!important;
 	font-family: 'Indie Flower', cursive;
+}
+.navbar-dark {
+	background-color: #000!important;
 }
 h1{
 	text-align: center;
