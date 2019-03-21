@@ -1,0 +1,38 @@
+table {
+		border: 0,5px solid gray;
+		width: 100%;
+		text-align: left;
+		margin: auto auto;
+		font-family: 'Indie Flower', cursive;
+			
+		}
+		th {
+			text-align: center;
+			background-color: #435361;
+			color: white;
+		}
+		th, td {
+			text-align: left;
+			padding: 8px;
+		}
+		tr:nth-child(even) {
+			background-color: #dddddd;
+		}
+nav a {
+	color: #fd217e!important;
+	font-family: 'Indie Flower', cursive;
+}
+h1{
+	text-align: center;
+	text-transform: uppercase;
+}		
+footer a{
+	color: #fd217e!important;
+	font-family: 'Indie Flower', cursive;
+}
+footer p{
+	color: #fff;
+	/*font-family: 'Indie Flower', cursive;*/
+	margin-bottom: 0;
+	padding: 20px;
+}
