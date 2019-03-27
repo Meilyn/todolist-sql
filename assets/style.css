@@ -18,6 +18,7 @@ table {
 		tr:nth-child(even) {
 			background-color: #dddddd;
 		}
+
 nav a {
 	color: #fff!important;
 	font-family: 'Indie Flower', cursive;
@@ -34,8 +35,8 @@ footer a{
 	font-family: 'Indie Flower', cursive;
 }
 footer p{
-	color: #fff;
-	/*font-family: 'Indie Flower', cursive;*/
+	color: #fd217e;
+	font-family: 'Indie Flower', cursive;
 	margin-bottom: 0;
 	padding: 20px;
 }

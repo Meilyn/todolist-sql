@@ -1,23 +1,40 @@
 <?php
-if ($_SERVER['REQUEST_METHOD'] === "POST") {
-	$add = "";
-	if (isset($_POST['tache'])) {
-		$tache = $_POST['tache'];
+	if ($_SERVER['REQUEST_METHOD'] === "POST") {
+		//ajoute en sql
+		if (isset($_POST['tache']) && isset($_POST['add'])) {
+			$bdd = new PDO("mysql:host=localhost;dbname=todolist;charset=utf8", 'root', 'root');
+			$tache = $_POST['tache'];
+
+			$req = $bdd->prepare('
+				INSERT INTO todos
+					(tache)
+				VALUES
+				    (?)
+			');
+			$req->execute([
+				$tache,
+			]);	
+			header('location:index.php');
+		}
+	}
+	if(isset($_POST['delete']) && isset($_POST['fait'])){
 		$bdd = new PDO("mysql:host=localhost;dbname=todolist;charset=utf8", 'root', 'root');
-	$req = $bdd->prepare('INSERT INTO todos(tache)VALUES(:tache)');
-	$req->execute(array(
-		'tache'=>$tache,
-	));	
-		$add .= "Les données ont bien été ajouté";	
+		foreach ($_POST['fait'] as $val) {
+			var_dump($val);
+			$req = $bdd->prepare("
+				DELETE FROM todos 
+				WHERE 
+					tache = ?
+			");
+			$req->execute([
+				$val,
+			]);
+		}
+		header('location:index.php');
 	}
-}
-	try
-	{
-		$bdd = new PDO("mysql:host=localhost;dbname=todolist;charset=utf8", 'root', 'root');
-	}
-	catch(Exception $e){
-	die('Erreur : ' .$e->getMessage());
-	}
+
+	// function 
+
  ?>
 
 <!DOCTYPE html>
@@ -41,46 +58,40 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 </head>
 <body>
 	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-			<a href="index.html" class="navbar-brand">
-				<img src="assets/img/logo.jpg" alt="logo TDL" width="40"> To Do List
-			</a>
+		<a href="index.html" class="navbar-brand">
+			<img src="assets/img/logo.jpg" alt="logo TDL" width="40"> To Do List
+		</a>
 	</nav>		
 	<div class="container">
 		<form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 			<h1>Task To Do</h1><hr>
 				<?php
 					//Importer les données
+					$bdd = new PDO("mysql:host=localhost;dbname=todolist;charset=utf8", 'root', 'root');
 					$query = $bdd->prepare('SELECT * FROM todos');
 					$query->execute();
 					foreach ($query as $value) {	
 				?>
 				<div class="form-check">
-				 	<input type="checkbox" name="fait[]" value="<?= $value['tache'];?>" class="form-check-input"><?=
-				 			$value['tache'] ."<br>"; ?>
+				 	<input type="checkbox" name="fait[]" value="<?= $value['tache'];?>" class="form-check-input">
+				 	<?=$value['tache'] ."<br>"; ?>
 				</div>		
-				 	<?php 
-				 	}
-				 	?>
+				<?php 
+				}
+				?>
 				 <br>
-				<button type="button" class="btn btn-warning">Enregistrer</button><br><br>
-			<h4>Archive</h4>	
-
-
-						<div class="form-check">
-    						<input type="checkbox" class="form-check-input" value="" name="check[]">
-  						</div>
-				
-					<div class="input-group">
-  						<input type="text" class="form-control" placeholder="Tâches à faire" name="tache">
+  				<button class="btn btn-warning" name="delete" type="submit" value="delete">Fait!</button><br><br>
+				<div class="input-group">
+  					<input type="text" class="form-control" placeholder="Tâches à faire" name="tache">
   					<div class="input-group-append">
     					<button class="btn btn-outline-secondary" type="submit" name="add" value="add">Ajouter</button>
  					 </div>
-					</div><br>
-					<button class="btn btn-outline-secondary" type="submit" name="fait">Fait!</button><br><br>
-	</form>
+					</div>
+				<br>	
+		</form>
 	</div>
 	<footer class="page-footer font-small cyan bg-dark text-center">
-    <div class="container-fluid">
+    <div class="container-fluid creative">
       <p>Angry Creative!</p>
     </div> 
   </footer>

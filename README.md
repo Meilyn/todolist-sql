@@ -24,7 +24,7 @@ partie inférieure : un petit formulaire permettant d'ajouter une tâche (un cha
 Mon App avances: 
 
 - [x] Possibilitée de créer des tâches :+1:
-- [ ] Archive
+- [x] Effacer
 - [ ] Bonus
 
 
