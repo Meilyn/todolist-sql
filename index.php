@@ -1,10 +1,10 @@
 <?php
 	if ($_SERVER['REQUEST_METHOD'] === "POST") {
-		//ajoute en sql
+		//Ajouter en SQL
 		if (isset($_POST['tache']) && isset($_POST['add'])) {
 			$bdd = new PDO("mysql:host=localhost;dbname=todolist;charset=utf8", 'root', 'root');
 			$tache = $_POST['tache'];
-
+			//Requêtes
 			$req = $bdd->prepare('
 				INSERT INTO todos
 					(tache)
@@ -33,10 +33,7 @@
 		header('location:index.php');
 	}
 
-	// function 
-
  ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -65,28 +62,28 @@
 	<div class="container">
 		<form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 			<h1>Task To Do</h1><hr>
-				<?php
+				<!-- <?php
 					//Importer les données
 					$bdd = new PDO("mysql:host=localhost;dbname=todolist;charset=utf8", 'root', 'root');
-					$query = $bdd->prepare('SELECT * FROM todos');
-					$query->execute();
-					foreach ($query as $value) {	
-				?>
+						$query = $bdd->prepare('SELECT * FROM todos');
+						$query->execute();
+						foreach ($query as $value) {	
+				?> -->
 				<div class="form-check">
 				 	<input type="checkbox" name="fait[]" value="<?= $value['tache'];?>" class="form-check-input">
 				 	<?=$value['tache'] ."<br>"; ?>
 				</div>		
-				<?php 
+				<!-- <?php 
 				}
-				?>
-				 <br>
+				?> -->
+				<br>
   				<button class="btn btn-warning" name="delete" type="submit" value="delete">Fait!</button><br><br>
 				<div class="input-group">
   					<input type="text" class="form-control" placeholder="Tâches à faire" name="tache">
   					<div class="input-group-append">
     					<button class="btn btn-outline-secondary" type="submit" name="add" value="add">Ajouter</button>
- 					 </div>
-					</div>
+ 					</div>
+				</div>
 				<br>	
 		</form>
 	</div>
