@@ -64,17 +64,17 @@
 			<h1>Task To Do</h1><hr>
 				//<?php
 					//Importer les données
-					//$bdd = new PDO("mysql:host=localhost;dbname=todolist;charset=utf8", 'root', 'root');
-						//$query = $bdd->prepare('SELECT * FROM todos');
-						//$query->execute();
-						//foreach ($query as $value) {	
+					$bdd = new PDO("mysql:host=localhost;dbname=todolist;charset=utf8", 'root', 'root');
+						$query = $bdd->prepare('SELECT * FROM todos');
+						$query->execute();
+						foreach ($query as $value) {	
 				?>
 				<div class="form-check">
 				 	<input type="checkbox" name="fait[]" value="<?= $value['tache'];?>" class="form-check-input">
 				 	<?=$value['tache'] ."<br>"; ?>
 				</div>		
 				<?php 
-				//}
+				}
 				?>
 				<br>
   				<button class="btn btn-warning" name="delete" type="submit" value="delete">Fait!</button><br><br>
